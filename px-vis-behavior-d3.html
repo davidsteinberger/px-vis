@@ -1242,6 +1242,7 @@ PxVisBehaviorD3.lineShared = [{
         renderToCanvas = (typeof(toCanvas) !== 'undefined') ? toCanvas : false,
         xKey = _this.completeSeriesConfig[_this.seriesId]['x'],
         yKey = _this.completeSeriesConfig[_this.seriesId]['y'],
+        interpolationFunction = Px.d3[_this.completeSeriesConfig[_this.seriesId].interpolationFunction] || this.interpolationFunction,
         line,
         counter = 0;
 
@@ -1279,8 +1280,8 @@ PxVisBehaviorD3.lineShared = [{
         });
     }
 
-    if(this.interpolationFunction) {
-      line.curve(this.interpolationFunction);
+    if(interpolationFunction) {
+      line.curve(interpolationFunction);
     }
 
     // If using canvas, tell it the context to draw to.
